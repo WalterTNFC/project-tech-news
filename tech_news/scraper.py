@@ -1,7 +1,19 @@
+import requests
+from time import sleep
+
+
 # Requisito 1
-# Initial commit
 def fetch(url):
-    """Seu código deve vir aqui"""
+    try:
+        sleep(1)
+        response = requests.get(
+            url, headers={"user-agent": "Fake user agent"}, timeout=3
+        )
+        response.raise_for_status()
+    except (requests.exceptions.HTTPError, requests.Timeout):
+        return None
+    else:
+        return response.text
 
 
 # Requisito 2
