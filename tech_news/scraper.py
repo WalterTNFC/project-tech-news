@@ -72,10 +72,14 @@ def get_tech_news(amount):
         html_content = fetch(url)
         next_link = scrape_updates(html_content)
 
-        request_page = fetch(next_link[contador])
-        scrape = (scrape_news(request_page))
-        links.append(scrape)
-        contador = contador + 1
+        try:
+            request_page = fetch(next_link[contador])
+            scrape = (scrape_news(request_page))
+            links.append(scrape)
+            contador = contador + 1
+        except IndexError:
+            url = scrape_next_page_link(html_content)
+            contador = 0
 
     create_news(links)
     return links
