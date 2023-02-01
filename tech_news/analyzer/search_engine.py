@@ -1,5 +1,5 @@
 from tech_news.database import search_news
-from datetime import datetime
+# from datetime import datetime
 
 
 # Requisito 6
@@ -18,25 +18,26 @@ def search_by_title(title):
 
 # Requisito 7
 def search_by_date(date):
+    """Seu código deve vir aqui"""
     # Data no formato ISO AAAA-MM-DD
     # Referencia 2
-    res = True
-    search_list_tuple = []
-    try:
-        res = bool(datetime.strptime(date, format))
-    except ValueError:
-        res = False
-        raise ValueError("Data inválida")
+    # res = True
+    # search_list_tuple = []
+    # try:
+    #     res = bool(datetime.strptime(date, format))
+    # except ValueError:
+    #     res = False
+    #     raise ValueError("Data inválida")
 
-    if (res is True):
-        search_list = search_news(
-            {"timestamp": {"$regex": date, "$options": "i"}}
-        )
-        search_list_tuple = [
-            tuple((search["title"], search["url"])) for search in search_list
-        ]
+    # if (res is True):
+    #     search_list = search_news(
+    #         {"timestamp": {"$regex": date, "$options": "i"}}
+    #     )
+    #     search_list_tuple = [
+    #         tuple((search["title"], search["url"])) for search in search_list
+    #     ]
 
-    return search_list_tuple
+    # return search_list_tuple
 
 
 # Requisito 8
