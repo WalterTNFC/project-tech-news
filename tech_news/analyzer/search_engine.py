@@ -18,7 +18,6 @@ def search_by_title(title):
 
 # Requisito 7
 def search_by_date(date):
-    """Seu código deve vir aqui"""
     # Data no formato ISO AAAA-MM-DD
     # Referencia 2
     res = True
@@ -43,7 +42,12 @@ def search_by_date(date):
 
 # Requisito 8
 def search_by_tag(tag):
-    """Seu código deve vir aqui"""
+    search_list = search_news({"tags": {"$regex": tag, "$options": "i"}})
+    search_list_tuple = [
+            tuple((search["title"], search["url"])) for search in search_list
+        ]
+
+    return search_list_tuple
 
 
 # Requisito 9
